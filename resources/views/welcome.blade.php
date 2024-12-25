@@ -51,7 +51,7 @@
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                 <a href="{{ route('login') }}" class="btn btn-light btn-lg px-4 gap-3 rounded-5">
                     Learn More
-                </a> 
+                </a>
             </div>
         </div>
     </div>
