@@ -73,7 +73,46 @@ class AdminController extends Controller
 
     public function update(Request $request, string $id)
     {
-        //
+        $messages = [
+            'ISBN' => [
+                'numeric' => 'The ISBN must be a number.',
+                'min' => 'The ISBN must be at least 10 digits.',
+                'unique' => 'This ISBN is already taken.',
+            ],
+            'tahun_terbit' => [
+                'max' => 'The Year input is Invalid. ex: 2024.',
+            ],
+            'stok' => [
+                'numeric' => 'The Input must be a number.',
+                'min' => 'The Stock should be more than 1. ex: 21',
+            ],
+        ];
+
+        $validator = Validator::make($request->all(), [
+            'judul_buku' => 'required|string|max:255',
+            'penerbit' => 'required|string|max:255',
+            'penulis' => 'required|string|max:255',
+            'ISBN' => 'required|numeric|min:1111111111|unique:buku,ISBN,'. $id, //ISBN Min.10, Max.13
+            'tahun_terbit' => 'required|numeric|max:9999',
+            'stok' => 'required|numeric|min:1',
+        ], $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $buku = Buku::findOrFail($id);
+
+
+        $buku->judul_buku = $request->judul_buku;
+        $buku->penerbit = $request->penerbit;
+        $buku->penulis = $request->penulis;
+        $buku->ISBN = $request->ISBN;
+        $buku->tahun_terbit = $request->tahun_terbit;
+        $buku->stok = $request->stok;
+        $buku->save();
+
+        return redirect()->route('dashboard-admin.index');
     }
 
     public function destroy(string $id)

@@ -44,7 +44,7 @@
 
             <div class="form-group">
                 <label for="user_id">Pilih User</label>
-                <select name="user_id" id="user_id" class="form-control" disabled>
+                <select name="user_id" id="user_id" class="form-control" >
                     @foreach ($users as $user)
                         <option value="{{ $user->id }}"@if ($user->id == $peminjaman->user_id) selected @endif>
                             {{ $user->name }}
