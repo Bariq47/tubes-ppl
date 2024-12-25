@@ -23,27 +23,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
-// Route::get('/routing', function () {
-//     return view('routing');
-// });
-
+Route::get('/', function () {return view('welcome');})->name('welcome');
 
 Route::group(['middleware' => 'role:admin'], function () {
     Route::resource('dashboard-admin', AdminController::class);
     Route::resource('dashboard-peminjaman', peminjamController::class);
     // Route::get('peminjaman/create/{id}', [peminjamController::class, 'create'])->name('peminjaman.create');
-    
-
-
 });
 
 Route::group(['middleware' => 'role:pelanggan'], function () {
     Route::resource('dashboard-pelanggan', PelangganController::class);
-
 });
-
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
