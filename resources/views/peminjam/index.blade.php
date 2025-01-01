@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Peminjaman</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     @vite('resources/sass/app.scss')
 </head>
 
@@ -33,6 +34,8 @@
             </div>
         </div>
     </nav>
+
+    {{-- HERO PART 1 --}}
     <div class="container">
         <h1 class="pb-2 border-bottom text-center text-light">Borrowed Books</h1>
         <div class="table-responsive border p-3 mt-4 rounded-3">
@@ -49,47 +52,23 @@
                 </thead>
                 <tbody>
                     @foreach ($peminjaman as $pinjam)
-                        <tr>
+                        <tr class="text-center align-middle" style="text-align: center">
                             <td>{{ $pinjam->user->name }}</td>
                             <td>{{ $pinjam->buku->judul_buku }}</td>
                             <td>{{ $pinjam->tanggal_pinjam }}</td>
                             <td>{{ $pinjam->tanggal_kembali }}</td>
                             <td>{{ $pinjam->status }}</td>
-                            <td><a href="{{ route('dashboard-peminjaman.edit', $pinjam->id) }}"
-                                    class="btn btn-warning">Edit</a></td>
+                            <td><a href="{{ route('dashboard-peminjaman.edit', $pinjam->id) }}" class="btn btn-warning">
+                                    <i class="bi bi-pencil-square"></i>
+                                    Ubah
+                                </a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
-    {{-- <div class="container">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Nama User</th>
-                    <th>Judul Buku</th>
-                    <th>Tanggal Pinjam</th>
-                    <th>Tanggal Kembali</th>
-                    <th>Status</th>
-                    <TH>Action</TH>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($peminjaman as $pinjam)
-                    <tr>
-                        <td>{{ $pinjam->user->name }}</td>
-                        <td>{{ $pinjam->buku->judul_buku }}</td>
-                        <td>{{ $pinjam->tanggal_pinjam }}</td>
-                        <td>{{ $pinjam->tanggal_kembali }}</td>
-                        <td>{{ $pinjam->status }}</td>
-                        <td><a href="{{ route('dashboard-peminjaman.edit', $pinjam->id) }}"
-                                class="btn btn-warning">Edit</a></td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div> --}}
     @vite('resources/sass/app.scss')
 </body>
 
