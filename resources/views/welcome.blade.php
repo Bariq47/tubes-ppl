@@ -20,15 +20,15 @@
                 <ul class="nav-bar-nav d-flex align-items-center mb-2 mb-md-0 fs-5 ms-auto" style="gap: 1rem;">
                     <li class="nav-item">
                         <a href="{{ route('dashboard-admin.index') }}" class="btn btn-light">
-                            Admin
+                            Login
                         </a>
                     </li>
                     <li class="list-inline-item text-light">|</li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{ route('login') }}" class="btn btn-light">
                             Sign In
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="list-inline-item text-light">|</li>
                     <li class="nav-item">
                         <a href="{{ route('register') }}" class="btn btn-light">
