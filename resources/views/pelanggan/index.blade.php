@@ -35,8 +35,8 @@
                         <th>Penulis</th>
                         <th>ISBN</th>
                         <th>Tahun Terbit</th>
-                        {{-- <th>Tanggal Peminjaman(?)</th>
-                        <th>...?</th>
+                        <th>Tanggal Peminjaman</th>
+                        {{-- <th>...?</th>
                         <th>...?</th> --}}
                     </tr>
                 </thead>

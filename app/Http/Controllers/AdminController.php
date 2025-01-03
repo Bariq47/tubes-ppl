@@ -28,7 +28,7 @@ class AdminController extends Controller
                 'unique' => 'This ISBN is already taken.',
             ],
             'tahun_terbit' => [
-                'max' => 'The Year input is Invalid. ex: 2024.',
+                'max' => 'The Year input is Invalid. ex: 2024. (range: 1901-2155)',
             ],
             'stok' => [
                 'numeric' => 'The Input must be a number.',
@@ -41,7 +41,7 @@ class AdminController extends Controller
             'penerbit' => 'required|string|max:255',
             'penulis' => 'required|string|max:255',
             'ISBN' => 'required|numeric|min:1111111111|unique:buku,ISBN', //ISBN Min.10, Max.13
-            'tahun_terbit' => 'required|numeric|max:9999',
+            'tahun_terbit' => 'required|numeric|min:1901|max:2155',
             'stok' => 'required|numeric|min:1',
         ], $messages);
 

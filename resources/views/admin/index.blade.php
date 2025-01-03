@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     @vite('resources/sass/app.scss')
 </head>
 
@@ -23,7 +24,7 @@
 
     {{-- HERO PART 1 --}}
     <div class="container">
-        <h2 class="pb-2 border-bottom text-center text-light">Our Collection</h2>
+        <h1 class="pb-2 border-bottom text-center text-light">Our Collection</h1>
         {{-- BUTTONS --}}
         <div class="ms-auto mt-4">
             <ul class="list-inline mb-0 text-end">
@@ -41,7 +42,6 @@
             </ul>
         </div>
 
-        
         <hr>
         {{-- TABLE --}}
         <div class="table-responsive border p-3 rounded-3">
@@ -54,7 +54,7 @@
                         <th>ISBN</th>
                         <th>Tahun Terbit</th>
                         <th>Stok</th>
-                        <th>Action</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -67,13 +67,18 @@
                             <td>{{ $buku->tahun_terbit }} </td>
                             <td>{{ $buku->stok }} </td>
                             <td>
-                                <a href="{{ route('dashboard-admin.edit', $buku->id) }}"
-                                    class="btn btn-warning">Edit</a>
+                                <a href="{{ route('dashboard-admin.edit', $buku->id) }}" class="btn btn-warning">
+                                    <i class="bi bi-pencil-square"></i>
+                                    Ubah
+                                </a>
                                 <form action="{{ route('dashboard-admin.destroy', $buku->id) }}" method="POST"
                                     class="d-inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                    <button type="submit" class="btn btn-danger">
+                                        <i class="bi bi-trash3"></i>
+                                        Hapus
+                                    </button>
                                 </form>
                             </td>
                         </tr>
