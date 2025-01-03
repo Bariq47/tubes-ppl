@@ -13,7 +13,7 @@
 
 </head>
 
-<body>
+<body class="bg-dark">
     <!-- Navbar utama -->
     @if (!request()->is('login','home'))
         {{-- Tampilkan navbar ini jika bukan di halaman login --}}
