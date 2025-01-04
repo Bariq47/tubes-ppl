@@ -133,7 +133,7 @@
                     <hr class="mb-2">
                     <div class="text-center">
                         <small>
-                            Have an account? 
+                            Have an account?
                             <a class="text-body-secondary" href="{{ route('login') }}">Sign in.</a>
                         </small>
                     </div>

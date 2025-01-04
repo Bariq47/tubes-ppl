@@ -33,6 +33,7 @@ Route::group(['middleware' => 'role:admin'], function () {
 
 Route::group(['middleware' => 'role:pelanggan'], function () {
     Route::resource('dashboard-pelanggan', PelangganController::class);
+    Route::get('/pelanggan', function () {return view('pelanggan/index');})->name('pelanggan');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
