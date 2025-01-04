@@ -24,6 +24,12 @@
                         </a>
                     </li>
                     <li class="list-inline-item text-light">|</li>
+                    {{-- <li class="nav-item">
+                        <a href="{{ route('login') }}" class="btn btn-light">
+                            Sign In
+                        </a>
+                    </li> --}}
+                    <li class="list-inline-item text-light">|</li>
                     <li class="nav-item">
                         <a href="{{ route('register') }}" class="btn btn-light">
                             Register

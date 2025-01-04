@@ -23,48 +23,38 @@
 
     {{-- HERO PART 1 --}}
     <div class="container">
-        <h2 class="pb-2 border-bottom text-center text-light">My Collection</h2>
+        <h2 class="pb-2 border-bottom text-center text-light">Daftar Buku</h2>
         <hr>
         {{-- TABLE --}}
-        <div class="table-responsive border p-3 rounded-3">
-            <table class="table table-bordered table-hover table-striped mb-0 bg-white data-table" id="productTable">
-                <thead>
-                    <tr style="text-align: center">
-                        <th>Judul Buku</th>
-                        <th>Penerbit</th>
-                        <th>Penulis</th>
-                        <th>ISBN</th>
-                        <th>Tahun Terbit</th>
-                        <th>Tanggal Peminjaman</th>
-                        {{-- <th>...?</th>
-                        <th>...?</th> --}}
-                    </tr>
-                </thead>
-                {{-- <tbody>
-                    @foreach ($bukuu as $buku)
-                        <tr class="text-center align-middle" style="text-align: center">
-                            <td>{{ $buku->judul_buku }} </td>
-                            <td>{{ $buku->penerbit }} </td>
-                            <td>{{ $buku->penulis }} </td>
-                            <td>{{ $buku->ISBN }} </td>
-                            <td>{{ $buku->tahun_terbit }} </td>
-                            <td>{{ $buku->stok }} </td>
-                            <td>
-                                <a href="{{ route('dashboard-admin.edit', $buku->id) }}"
-                                    class="btn btn-warning">Edit</a>
-                                <form action="{{ route('dashboard-admin.destroy', $buku->id) }}" method="POST"
-                                    class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Hapus</button>
-                                </form>
-                            </td>
+         <div class="table-responsive border p-3 rounded-3">
+            <div class="table-responsive border p-3 rounded-3">
+                <table class="table table-bordered table-hover table-striped mb-0 bg-white data-table" id="productTable">
+                    <thead>
+                        <tr style="text-align: center">
+                            <th>Judul Buku</th>
+                            <th>Penerbit</th>
+                            <th>Penulis</th>
+                            <th>ISBN</th>
+                            <th>Tahun Terbit</th>
+                            <th>Stok</th>
+                            {{-- <th>Action</th> --}}
                         </tr>
-                    @endforeach
-                </tbody> --}}
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach ($bukuu as $buku)
+                            <tr class="text-center align-middle" style="text-align: center">
+                                <td>{{ $buku->judul_buku }} </td>
+                                <td>{{ $buku->penerbit }} </td>
+                                <td>{{ $buku->penulis }} </td>
+                                <td>{{ $buku->ISBN }} </td>
+                                <td>{{ $buku->tahun_terbit }} </td>
+                                <td>{{ $buku->stok }} </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
     {{-- <h1>narutoooooooooo</h1>
     <table class="table table-bordered table-hover table-striped mb-0 bg-white" id="tableKos">
         <thead>
