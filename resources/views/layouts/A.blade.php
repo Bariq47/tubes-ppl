@@ -9,6 +9,7 @@
     <title>Yokoso!</title>
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])       <!-- Scripts -->
     @yield('custom-css')                                            <!-- Custom CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 

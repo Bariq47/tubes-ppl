@@ -26,7 +26,7 @@
         <h2 class="pb-2 border-bottom text-center text-light">Daftar Buku</h2>
         <hr>
         {{-- TABLE --}}
-        <div class="table-responsive border p-3 rounded-3">
+         <div class="table-responsive border p-3 rounded-3">
             <div class="table-responsive border p-3 rounded-3">
                 <table class="table table-bordered table-hover table-striped mb-0 bg-white data-table" id="productTable">
                     <thead>
@@ -55,7 +55,6 @@
                 </table>
             </div>
         </div>
-    </div>
     {{-- <h1>narutoooooooooo</h1>
     <table class="table table-bordered table-hover table-striped mb-0 bg-white" id="tableKos">
         <thead>

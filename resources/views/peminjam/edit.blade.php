@@ -9,83 +9,75 @@
     @vite('resources/sass/app.scss')
 </head>
 
-<body>
-    <div class = 'container'>
-        <a href="{{ route('dashboard-peminjaman.index') }}" class="btn btn-primary">Kembali</a>
-        <h1>Membuat Peminjaman</h1>
+<body class="bg-dark">
+    <div class="container">
+        <h1 class="py-2 border-bottom text-center text-light">Buat Peminjaman</h1>
+        <div class="container mt-4 d-flex justify-content-center text-center">
 
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+            <form action="{{ route('dashboard-peminjaman.update', $peminjaman->id) }}" method="POST"
+                enctype="multipart/form-data" class="w-50">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </div>
+                @endif
+                @csrf
+                @method('PATCH')
 
+                {{-- Floating Labels --}}
+                <div class="form-floating mb-3">
+                    <select name="buku_id" id="buku_id" class="form-control" required>
+                        @foreach ($buku as $bukuu)
+                            <option value="{{ $bukuu->id }}" @if ($bukuu->id == $peminjaman->buku_id) selected @endif>
+                                {{ $bukuu->judul_buku }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <label for="buku_id">Judul Buku</label>
+                </div>
 
-        <form action="{{ route('dashboard-peminjaman.update', $peminjaman->id) }}" method="POST"
-            enctype="multipart/form-data">
-            @csrf
-            @method('PATCH')
+                <div class="form-floating mb-3">
+                    <select name="user_id" id="user_id" class="form-control">
+                        @foreach ($users as $user)
+                            <option value="{{ $user->id }}" @if ($user->id == $peminjaman->user_id) selected @endif>
+                                {{ $user->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <label for="user_id">Pilih User</label>
+                </div>
 
-            <div class="form-group">
-                <label for="buku_id">Judul Buku</label>
-                <select name="buku_id" id="buku_id" class="form-control" required>
-                    @foreach ($buku as $bukuu)
-                        <option value="{{ $bukuu->id }}" @if ($bukuu->id == $peminjaman->buku_id) selected @endif>
-                            {{ $bukuu->judul_buku }}
+                <div class="form-floating mb-3">
+                    <input type="date" name="tanggal_pinjam" id="tanggal_pinjam" class="form-control"
+                        value="{{ $peminjaman->tanggal_pinjam }}" required>
+                    <label for="tanggal_pinjam">Tanggal Pinjam</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="date" name="tanggal_kembali" id="tanggal_kembali" class="form-control"
+                        value="{{ $peminjaman->tanggal_kembali }}" required>
+                    <label for="tanggal_kembali">Tanggal Kembali</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <select name="status" class="form-control" id="status" required>
+                        <option value="dipinjam" @if ($peminjaman->status === 'dipinjam') selected @endif>Dipinjam</option>
+                        <option value="dikembalikan" @if ($peminjaman->status === 'dikembalikan') selected @endif>
+                            Dikembalikan
                         </option>
-                    @endforeach
-                </select>
-            </div>
-
-
-            <div class="form-group">
-                <label for="user_id">Pilih User</label>
-                <select name="user_id" id="user_id" class="form-control" >
-                    @foreach ($users as $user)
-                        <option value="{{ $user->id }}"@if ($user->id == $peminjaman->user_id) selected @endif>
-                            {{ $user->name }}
-                        </option>
-                    @endforeach
-                </select>
-                @error('user_id')
-                    <div class="text-danger">{{ $message }}</div>
-                @enderror
-            </div>
-
-            <div class="form-group">
-                <label for="tanggal_pinjam">Tanggal Pinjam</label>
-                <input type="date" name="tanggal_pinjam" id="tanggal_pinjam" class="form-control"
-                    value="{{ $peminjaman->tanggal_pinjam }}" required>
-                </input>
-
-            </div>
-
-            <div class="form-group">
-                <label for="tanggal_kembali">Tanggal Kembali</label>
-                <input type="date" name="tanggal_kembali" id="tanggal_kembali"
-                    class="form-control"value="{{ $peminjaman->tanggal_kembali }}" required>
-                </input>
-
-            </div>
-
-            <div class="form-group">
-                <label for="status">Status</label>
-                <select name="status" class="form-control" id="status" required>
-                    <option value="dipinjam" @if ($peminjaman->status === 'dipinjam') selected @endif>Dipinjam</option>
-                    <option value="dikembalikan" @if ($peminjaman->status === 'dikembalikan') selected @endif>Dikembalikan</option>
-                </select>
-            </div>
-
-            @if ($peminjaman->status === 'dipinjam')
-                <button type="submit" class="btn btn-success">Kembalikan Buku</button>
-            @else
-                <button type="submit" class="btn btn-primary">Proses Peminjaman</button>
-            @endif
-        </form>
+                    </select>
+                    <label for="status">Status</label>
+                </div>
+                <a href="{{ route('dashboard-peminjaman.index') }}" class="btn btn-danger">Cancel</a>
+                @if ($peminjaman->status === 'dipinjam')
+                    <button type="submit" class="btn btn-success">Kembalikan Buku</button>
+                @else
+                    <button type="submit" class="btn btn-primary">Proses Peminjaman</button>
+                @endif
+            </form>
+        </div>
     </div>
     @vite('resources/sass/app.scss')
 </body>
